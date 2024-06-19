@@ -1,0 +1,20 @@
+import Sidebar from '@/components/layout/sidebar'
+import Topbar from '@/components/layout/topbar'
+import { auth } from '@clerk/nextjs/server'
+import { redirect } from 'next/navigation'
+import React, { ReactNode } from 'react'
+
+export default function InstructorLayout({ children }: { children: ReactNode }) {
+    const { userId } = auth()
+    if (!userId) return redirect('/sign-in')
+
+    return (
+        <div className="h-full flex flex-col">
+            <Topbar />
+            <div className="flex-1 flex">
+                <Sidebar />
+                <div className="flex-1">{children}</div>
+            </div>
+        </div>
+    )
+}
