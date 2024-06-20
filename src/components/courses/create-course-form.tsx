@@ -3,7 +3,6 @@
 import { z } from 'zod'
 import { Button } from '../ui/button'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form'
-import { toast } from 'sonner'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
@@ -11,6 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { Input } from '../ui/input'
 import { Loader2 } from 'lucide-react'
 import ComboBox from '../custom/combo-box'
+import toast from "react-hot-toast"
 
 type Props = {
     categories: {
