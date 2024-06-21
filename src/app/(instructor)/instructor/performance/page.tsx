@@ -1,4 +1,5 @@
 import { getPerformance } from '@/app/actions/getPerformance'
+import Chart from '@/components/performance/chart'
 import DataCard from '@/components/performance/data-card'
 import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
@@ -14,7 +15,7 @@ export default async function PerformancePage() {
       <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mb-4'>
         <DataCard value={totalRevenue} label='Total Revenue' shouldFormat />
         <DataCard value={totalSales} label='Total Sales' />
-        {/* <Chart data={data} /> */}
+        <Chart data={data} />
       </div>
     </div>
   )

@@ -10,6 +10,7 @@ import ReadText from '../custom/read-text'
 import MuxPlayer from '@mux/mux-player-react'
 import Link from 'next/link'
 import ProgressButton from './progress-button'
+import SectionMenu from '../layout/section-menu'
 
 type Props = {
     course: Course & { sections: Section[] }
@@ -41,7 +42,7 @@ export default function SectionsDetails({ course, section, purchase, muxData, re
             <div className='flex flex-col md:flex-row md:justify-between md:items-center'>
                 <h1 className='text-2xl font-bold max-md:mb-4'>{section.title}</h1>
                 <div className='flex gap-4'>
-                    SectionMenu
+                    <SectionMenu course={course} />
                     {!purchase ? (
                         <Button onClick={buyCourse}>
                             {isLoading ? <Loader2 className='size-4 animate-spin' /> : <p>Buy this Course</p>}

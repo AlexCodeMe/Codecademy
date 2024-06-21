@@ -27,7 +27,6 @@ export default async function CourseOverviewPage({ params }: {
   const instructor = await clerkClient.users.getUser(course.instructorId)
 
   let level
-
   if (course.levelId) {
     level = await db.level.findUnique({
       where: {
@@ -35,6 +34,7 @@ export default async function CourseOverviewPage({ params }: {
       },
     })
   }
+
   return (
     <div className="px-6 py-4 flex flex-col gap-5 text-sm">
       <div className="flex justify-between">

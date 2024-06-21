@@ -90,8 +90,7 @@ export default function Topbar() {
                             {pathname.startsWith("/instructor") && (
                                 <div className="flex flex-col gap-4">
                                     {sidebarRoutes.map((route) => (
-                                        <Link
-                                            href={route.path}
+                                        <Link href={route.path}
                                             key={route.path}
                                             className="text-sm font-medium hover:text-[#FDAB04]"
                                         >
