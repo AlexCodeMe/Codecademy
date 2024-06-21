@@ -16,6 +16,8 @@ import { Loader2, Trash } from 'lucide-react';
 import RichEditor from '../custom/rich-editor';
 import ComboBox from '../custom/combo-box';
 import FileUpload from '../custom/file-upload';
+import Delete from '../custom/delete';
+import PublishButton from '../custom/publish-button';
 
 type Props = {
     course: Course;
@@ -103,17 +105,13 @@ export default function EditCourseForm({
                 </div>
 
                 <div className="flex gap-5 items-start">
-                    <Button variant='outline'>
-                        Publish
-                    </Button>
-                    <Button><Trash className='size-4' /></Button>
-                    {/* <PublishButton
-            disabled={!isCompleted}
-            courseId={course.id}
-            isPublished={course.isPublished}
-            page="Course"
-          />
-          <Delete item="course" courseId={course.id} /> */}
+                    <PublishButton
+                        disabled={!isCompleted}
+                        courseId={course.id}
+                        isPublished={course.isPublished}
+                        page="Course"
+                    />
+                    <Delete item="course" courseId={course.id} />
                 </div>
             </div>
 

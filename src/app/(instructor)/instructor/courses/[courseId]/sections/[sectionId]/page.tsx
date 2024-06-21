@@ -1,3 +1,4 @@
+import AlertBanner from '@/components/custom/alert-banner'
 import EditSectionForm from '@/components/sections/edit-section-form'
 import { db } from '@/lib/db'
 import { auth } from '@clerk/nextjs/server'
@@ -47,11 +48,11 @@ export default async function SectionIdPage({ params }: {
 
   return (
     <div className="px-10">
-      {/* <AlertBanner
+      <AlertBanner
         isCompleted={isCompleted}
         requiredFieldsCount={requiredFieldsCount}
         missingFieldsCount={missingFieldsCount}
-      /> */}
+      />
       <EditSectionForm
         section={section}
         courseId={params.courseId}

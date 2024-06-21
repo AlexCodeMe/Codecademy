@@ -1,3 +1,5 @@
+import { columns } from '@/components/courses/columns'
+import DataTable from '@/components/custom/data-table'
 import { Button } from '@/components/ui/button'
 import { db } from '@/lib/db'
 import { auth } from '@clerk/nextjs/server'
@@ -25,18 +27,7 @@ export default async function CoursePage() {
             </Link>
 
             <div className="mt-5">
-                {courses.map((course) => (
-                    <div key={course.id}>
-                        <Link href={`/instructor/courses/${course.id}/basic`}>
-                            <h2>{course.title}</h2>
-                            <p>{course.subtitle}</p>
-                            <p>{course.description}</p>
-                            <p>{course.price}</p>
-                        </Link>
-
-                    </div>
-                ))}
-                {/* <DataTable columns={columns} data={courses} /> */}
+                <DataTable columns={columns} data={courses} />
             </div>
         </div>
     )

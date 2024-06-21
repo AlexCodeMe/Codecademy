@@ -11,11 +11,15 @@ import toast from 'react-hot-toast'
 import { z } from 'zod'
 import { Button } from '../ui/button'
 import { ArrowLeft, Loader2 } from 'lucide-react'
+import MuxPlayer from "@mux/mux-player-react"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '../ui/form'
 import { Input } from '../ui/input'
 import RichEditor from '../custom/rich-editor'
 import FileUpload from '../custom/file-upload'
 import { Switch } from '../ui/switch'
+import ResourceForm from './resource-form'
+import Delete from '../custom/delete'
+import PublishButton from '../custom/publish-button'
 
 type Props = {
     section: Section & { resources: Resource[], muxData?: MuxData | null }
@@ -57,8 +61,8 @@ export default function EditSectionForm({
             await axios.post(
                 `/api/courses/${courseId}/sections/${section.id}`,
                 values
-            );
-            toast.success("Section Updated");
+            )
+            toast.success("Section Updated")
             router.refresh()
         } catch (error) {
             console.log('[edit-section-form] onSubmit', error)
@@ -76,14 +80,17 @@ export default function EditSectionForm({
                 </Link>
 
                 <div className="flex gap-5 items-start">
-                    {/* <PublishButton
+                    <PublishButton
                         disabled={!isCompleted}
                         courseId={courseId}
                         sectionId={section.id}
                         isPublished={section.isPublished}
                         page="Section"
                     />
-                    <Delete item="section" courseId={courseId} sectionId={section.id} /> */}
+                    <Delete item="section"
+                        courseId={courseId}
+                        sectionId={section.id}
+                    />
                 </div>
             </div>
 
@@ -135,10 +142,10 @@ export default function EditSectionForm({
 
                     {section.videoUrl && (
                         <div className="my-5">
-                            {/* <MuxPlayer
+                            <MuxPlayer
                                 playbackId={section.muxData?.playbackId || ""}
                                 className="md:max-w-[600px]"
-                            /> */}
+                            />
                         </div>
                     )}
                     <FormField
@@ -200,7 +207,7 @@ export default function EditSectionForm({
                 </form>
             </Form>
 
-            {/* <ResourceForm section={section} courseId={courseId} /> */}
+            <ResourceForm section={section} courseId={courseId} />
         </>
     )
 }
